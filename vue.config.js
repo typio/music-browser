@@ -1,4 +1,4 @@
 module.exports = {
-  devServer: { proxy: "https://typio.github.io/" },
+  devServer: { proxy: "http://localhost:8080" },
   publicPath: process.env.NODE_ENV === "production" ? "" : "/",
 };
