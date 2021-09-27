@@ -1,6 +1,6 @@
 <template>
   <h1>Albums</h1>
-  <input type="search" placeholder="Artist/Album Name">
+  <input type="search" placeholder="Artist/Album Name" v-model="term" />
   <div class="albums">
     <AlbumCard
       v-for="album in albums"
@@ -16,8 +16,6 @@ import { defineComponent } from "vue";
 import AlbumCard from "@/components/AlbumCard.vue";
 import AlbumService from "@/services/AlbumService";
 
-let term = "drake";
-
 export default defineComponent({
   name: "AlbumList",
   components: {
@@ -26,21 +24,21 @@ export default defineComponent({
   data() {
     return {
       albums: null,
+      term: "",
     };
   },
-  created() {
-    if (term != undefined || term != null)
-      AlbumService.getEvents(
-        "https://itunes.apple.com/search?term=" +
-          term +
-          "&country=us&entity=album"
-      )
-        .then((response) => {
-          this.albums = response.data.results;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  updated() {
+    AlbumService.getEvents(
+      "https://itunes.apple.com/search?term=" +
+        this.term +
+        "&country=us&entity=album"
+    )
+      .then((response) => {
+        this.albums = response.data.results;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 });
 </script>
