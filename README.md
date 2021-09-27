@@ -2,8 +2,6 @@
 
 ## Album browser using iTunes API.
 
----
-
 ### To run
 `npm install`
 
