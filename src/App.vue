@@ -7,6 +7,7 @@
 </template>
 
 <style>
+
 html {
   background: #333;
 }

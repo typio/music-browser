@@ -1,5 +1,5 @@
 <template>
-  <h1>Albums</h1>
+  <h1 class="text-xl font-medium text-black">Albums</h1>
   <input type="search" placeholder="Artist/Album Name" v-model="term" />
   <div class="albums">
     <AlbumCard
